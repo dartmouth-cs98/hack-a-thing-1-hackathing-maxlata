@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> YouTube List </title>
+    <style>
+      html {
+        height: 300px;
+        width: 300px;
+      }
+
+      button {
+         height: 20px;
+         width: 50px;
+         background: none; /* This removes the default background */
+         color: #313131;
+         border: 1px solid #313131;
+         border-radius: 20px; /* This gives our button rounded edges */
+         font-size: 12px;
+         cursor: pointer;
+         margin-top: 5px;
+         margin-bottom: 5px;
+         float: right;
+         position: relative;
+      }
+
+      input[type="text"] {
+        outline: none;
+        resize: none;
+        display: none;
+        size: 50;
+        background-color: #313131;
+      }
+
+      .color-row {
+        margin-bottom: 15px;
+      }
+
+      .box {
+        width: 10px;
+        height: 10px;
+        margin: 1px;
+        margin-top: 4px;
+        display: inline-block;
+        float: right;
+      }
+
+      .red {
+        background:#FF9AA2;
+      }
+
+      .green {
+        background:#B5EAD7;
+      }
+
+      .blue {
+        background:#C7CEEA;
+      }
+
+      .yellow {
+        background:#FCF7DE;
+      }
+
+      .purple {
+        background:#F0DEFD;
+      }
+    </style>
+
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-ZsuMvM8P5M/UdmXHmlKXbq6LZm47FIp7unfagjyrWFg=' 'sha256-C2GEvBKHUZfh5fkd+2eUrZBO1mRpDQYKDxxETqtHO20='">
+    <link href="emoji/css/emoji.css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+    <script src="popup.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCF71-36MbwJ48biqSeHE-USMPrYxE4qXU",
+        authDomain: "surprise-list-v2.firebaseapp.com",
+        databaseURL: "https://surprise-list-v2.firebaseio.com",
+        projectId: "surprise-list-v2",
+        storageBucket: "surprise-list-v2.appspot.com",
+        messagingSenderId: "1045559559692",
+        appId: "1:1045559559692:web:387766376579dd12b61029"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+  </head>
+  <body>
+    <div class="header"> The current YouTube video is
+    <input type="text" placeholder="Comment..." class="text_input" data-emojiable="true"></input>
+    <div class="color-row">
+      <div class="box red"></div>
+      <div class="box green"></div>
+      <div class="box blue"></div>
+      <div class="box yellow"></div>
+      <div class="box purple"></div>
+    </div>
+    <button id="submit" class="submit_button"> Submit </button>
+    <script src="jquery.min.js"></script>
+    <script src="emoji/js/config.js"></script>
+    <script src="emoji/js/util.js"></script>
+    <script src="emoji/js/jquery.emojiarea.js"></script>
+    <script src="emoji/js/emoji-picker.js"></script>
+
+    <script>
+      $(function() {
+        // Initializes and creates emoji set from sprite sheet
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: '[data-emojiable=true]',
+          assetsPath: 'emoji/img/',
+          popupButtonClasses: 'fa fa-smile-o'
+        });
+        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+        // It can be called as many times as necessary; previously converted input fields will not be converted again
+        window.emojiPicker.discover();
+      });
+    </script>
+  </body>
+</html>

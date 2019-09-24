@@ -1,0 +1,31 @@
+{
+    "name": "Sneaky YouTube List",
+    "version": "1.0",
+    "description": "Add YouTube videos with descriptions to a list we can cast",
+    "manifest_version": 2,
+    "background": {
+      "page": "background.html",
+      "matches": ["https://youtube.com/watch*", "http://youtube.com/watch*"],
+      "persistent": true
+    },
+    "permissions": [
+      "tabs",
+      "identity",
+      "https://www.gstatic.com/firebasejs/6.3.5/firebase.js"
+    ],
+    "browser_action": {
+      "default_icon": {
+        "16": "images/icon16.png"
+      },
+      "default_popup": "popup.html"
+    },
+    "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js 'sha256-ZsuMvM8P5M/UdmXHmlKXbq6LZm47FIp7unfagjyrWFg=' 'sha256-C2GEvBKHUZfh5fkd+2eUrZBO1mRpDQYKDxxETqtHO20='; object-src 'self'",
+    "oauth2": {
+      "client_id": "126497100275-l4h012h5ob47u84q0h4i7umaf4d9kbrg.apps.googleusercontent.com",
+      "scopes": [
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile"
+      ]
+    },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5KiEAbiwQ5d7EAj0b3ZHtUHYnzjHcbNkmKDi8/7MZis3+CiaLrB14BCI/ahsavDjKleHdqGpcatOQXz41EiUPxrkgKgOjK1ao6/ARR3LN5jQq3AF7Ad775gnuCJukHfJfAJkJ4mQaXqbRBldl57tDupMsUoVd79n9V/2GDNzoqTeJ3xYdKjR2YTZjAoQ2To9xlfnW8Z5IPWfHWZMz8hzSTfoO9TvBRIpwMzVEjIA8A7zCBHZ3x++rLRBbtc/+Om3P5eulhBo+q+c5J0S7bu05jkShrMxR5ha5Z55cl6Jfo4FaWT+NRLmrCCBRSm5tM2TpoGQ+5BGVfoKMpJixzfaswIDAQAB"
+}
