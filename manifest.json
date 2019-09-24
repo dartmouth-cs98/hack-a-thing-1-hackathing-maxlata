@@ -19,7 +19,7 @@
       },
       "default_popup": "popup.html"
     },
-    "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js 'sha256-ZsuMvM8P5M/UdmXHmlKXbq6LZm47FIp7unfagjyrWFg=' 'sha256-C2GEvBKHUZfh5fkd+2eUrZBO1mRpDQYKDxxETqtHO20='; object-src 'self'",
+    "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js 'sha256-VV0HuP5X2PxIDHpFk8criDmTJ80dxbwT8uAgZkD2KWc=' 'sha256-C2GEvBKHUZfh5fkd+2eUrZBO1mRpDQYKDxxETqtHO20='; object-src 'self'",
     "oauth2": {
       "client_id": "126497100275-l4h012h5ob47u84q0h4i7umaf4d9kbrg.apps.googleusercontent.com",
       "scopes": [

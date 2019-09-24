@@ -30,46 +30,13 @@
         size: 50;
         background-color: #313131;
       }
-
-      .color-row {
-        margin-bottom: 15px;
-      }
-
-      .box {
-        width: 10px;
-        height: 10px;
-        margin: 1px;
-        margin-top: 4px;
-        display: inline-block;
-        float: right;
-      }
-
-      .red {
-        background:#FF9AA2;
-      }
-
-      .green {
-        background:#B5EAD7;
-      }
-
-      .blue {
-        background:#C7CEEA;
-      }
-
-      .yellow {
-        background:#FCF7DE;
-      }
-
-      .purple {
-        background:#F0DEFD;
-      }
     </style>
 
     <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.6.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-database.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-ZsuMvM8P5M/UdmXHmlKXbq6LZm47FIp7unfagjyrWFg=' 'sha256-C2GEvBKHUZfh5fkd+2eUrZBO1mRpDQYKDxxETqtHO20='">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'sha256-VV0HuP5X2PxIDHpFk8criDmTJ80dxbwT8uAgZkD2KWc=' 'sha256-C2GEvBKHUZfh5fkd+2eUrZBO1mRpDQYKDxxETqtHO20='">
     <link href="emoji/css/emoji.css" rel="stylesheet">
     <script src="jquery.min.js"></script>
     <script src="popup.js"></script>
@@ -91,15 +58,7 @@
     </script>
   </head>
   <body>
-    <div class="header"> The current YouTube video is
-    <input type="text" placeholder="Comment..." class="text_input" data-emojiable="true"></input>
-    <div class="color-row">
-      <div class="box red"></div>
-      <div class="box green"></div>
-      <div class="box blue"></div>
-      <div class="box yellow"></div>
-      <div class="box purple"></div>
-    </div>
+    <input id="comment" type="text" placeholder="Comment..." class="text_input" data-emojiable="true"></input>
     <button id="submit" class="submit_button"> Submit </button>
     <script src="jquery.min.js"></script>
     <script src="emoji/js/config.js"></script>
@@ -108,6 +67,11 @@
     <script src="emoji/js/emoji-picker.js"></script>
 
     <script>
+      window.onload = function() {
+        var button = document.getElementById("submit");
+
+        button.addEventListener("click", postToFirebase);
+      }
       $(function() {
         // Initializes and creates emoji set from sprite sheet
         window.emojiPicker = new EmojiPicker({

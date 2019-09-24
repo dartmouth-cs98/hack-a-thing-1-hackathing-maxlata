@@ -8,10 +8,53 @@ var firebaseConfig = {
   appId: "1:1045559559692:web:387766376579dd12b61029"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+const appDb = app.database().ref();
 
-console.log("Hello from popup");
-chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
-  var url = tabs[0].url;
-  console.log(url);
-});
+function postToFirebase() {
+  var comment = getComment();
+  var link = getCurrentURL(getLink);
+  link = "https://www.youtube.com/watch?v=JAM_ONZgPnE";
+  console.log(link);
+  console.log(comment);
+
+  var data = {
+    comment: comment,
+    link: link
+  };
+  var updates = {};
+
+  updates['links'] = data;
+
+  return appDb.set(updates);
+}
+
+function getLink() {
+  chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, function (tabs) {
+    if (tabs[0]) {
+      var url = tabs[0].url;
+    } else {
+      url = "";
+    }
+    console.log(url);
+    return url;
+  });
+}
+
+function getComment() {
+  return document.getElementById("comment").value;
+}
+
+function returnLink(link) {
+  return link;
+}
+
+function getCurrentURL(callback) {
+  chrome.tabs.query({'active': true, 'currentWindow': true}, function(tabs) {
+    var tab = tabs[0];
+    var url = tab.url;
+
+    console.log(url + "!");
+    callback(url);
+  });
+}
